@@ -13,9 +13,9 @@ export default function Home() {
       <div className="glow-bg"></div>
       <div className="glow-bg-2"></div>
 
-      <div className="container">
-        {/* Navbar */}
-        <nav className="navbar animate-fade-in">
+      {/* Navbar */}
+      <nav className="navbar animate-fade-in">
+        <div className="navbar-inner">
           <div style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.02em' }}>
             Malkah<span className="text-gradient">Web Services</span>
           </div>
@@ -24,11 +24,13 @@ export default function Home() {
             <a href="#work">Our Work</a>
             <a href="#contact">Contact</a>
           </div>
-          <a href="#contact" className="btn btn-glass" style={{ padding: '10px 20px', fontSize: '0.9rem' }}>
-            Get in touch
+          <a href="#contact" className="btn btn-primary" style={{ padding: '10px 24px', fontSize: '0.9rem' }}>
+            Free Quote
           </a>
-        </nav>
+        </div>
+      </nav>
 
+      <div className="container" style={{ paddingTop: '100px' }}>
         {/* Hero Section */}
         <section className="section" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
           <div className="animate-fade-in delay-1" style={{ maxWidth: '800px' }}>
