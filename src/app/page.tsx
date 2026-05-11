@@ -1,7 +1,12 @@
+'use client';
+
 import Image from 'next/image';
+import { useState } from 'react';
 import { getImageUrl } from '@/lib/supabase';
 
 export default function Home() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <main>
       {/* Background glowing orbs */}
@@ -12,7 +17,7 @@ export default function Home() {
         {/* Navbar */}
         <nav className="navbar animate-fade-in">
           <div style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.02em' }}>
-            Malkah<span className="text-gradient">Web</span>
+            Malkah<span className="text-gradient">Web Services</span>
           </div>
           <div className="nav-links">
             <a href="#services">Services</a>
@@ -84,7 +89,7 @@ export default function Home() {
 
           <div className="grid-2 animate-fade-in delay-2">
             {/* Project 1 */}
-            <div className="glass portfolio-card">
+            <div className="glass portfolio-card" style={{ cursor: 'pointer' }} onClick={() => setSelectedImage(getImageUrl('stonex.png'))}>
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
                 <Image 
                   src={getImageUrl('stonex.png')} 
@@ -106,7 +111,7 @@ export default function Home() {
             </div>
 
             {/* Project 2 */}
-            <div className="glass portfolio-card">
+            <div className="glass portfolio-card" style={{ cursor: 'pointer' }} onClick={() => setSelectedImage(getImageUrl('rannosh.png'))}>
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
                 <Image 
                   src={getImageUrl('rannosh.png')} 
@@ -137,15 +142,18 @@ export default function Home() {
               Let's build something extraordinary together.
             </p>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', alignItems: 'center' }}>
-              <a href="tel:9055163505" className="btn btn-glass" style={{ width: '100%', maxWidth: '300px' }}>
-                📞 (905) 516-3505
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
+              <a href="tel:9055163505" className="contact-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>(905) 516-3505</span>
               </a>
-              <a href="mailto:info@malkahservices.ca" className="btn btn-glass" style={{ width: '100%', maxWidth: '300px' }}>
-                ✉️ info@malkahservices.ca
+              <a href="mailto:info@malkahservices.ca" className="contact-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>info@malkahservices.ca</span>
               </a>
-              <a href="https://www.instagram.com/malkahwebservices" target="_blank" rel="noopener noreferrer" className="btn btn-glass" style={{ width: '100%', maxWidth: '300px' }}>
-                📱 @malkahwebservices
+              <a href="https://www.instagram.com/malkahwebservices" target="_blank" rel="noopener noreferrer" className="contact-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>@malkahwebservices</span>
               </a>
             </div>
           </div>
@@ -156,6 +164,31 @@ export default function Home() {
           <p>© {new Date().getFullYear()} Malkah Web Services. All rights reserved.</p>
         </footer>
       </div>
+
+      {/* Fullscreen Image Modal */}
+      {selectedImage && (
+        <div 
+          className="modal-overlay"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="modal-close" 
+              onClick={() => setSelectedImage(null)}
+              aria-label="Close"
+            >
+              ✕
+            </button>
+            <Image 
+              src={selectedImage} 
+              alt="Portfolio Full View" 
+              fill
+              style={{ objectFit: 'contain' }}
+              unoptimized={true}
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
