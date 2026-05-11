@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { getImageUrl } from '@/lib/supabase';
 
 export default function Home() {
   return (
@@ -86,11 +87,12 @@ export default function Home() {
             <div className="glass portfolio-card">
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
                 <Image 
-                  src="/stonex.png" 
+                  src={getImageUrl('stonex.png')} 
                   alt="Stonex Contracting" 
                   fill
                   style={{ objectFit: 'cover' }}
                   priority
+                  unoptimized={true}
                 />
               </div>
               <div className="portfolio-content">
@@ -107,11 +109,12 @@ export default function Home() {
             <div className="glass portfolio-card">
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
                 <Image 
-                  src="/rannosh.png" 
+                  src={getImageUrl('rannosh.png')} 
                   alt="Rannosh Grill" 
                   fill
                   style={{ objectFit: 'cover' }}
                   priority
+                  unoptimized={true}
                 />
               </div>
               <div className="portfolio-content">
