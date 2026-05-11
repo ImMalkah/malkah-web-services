@@ -17,7 +17,7 @@ export default function Home() {
       <nav className="navbar animate-fade-in">
         <div className="navbar-inner">
           <div style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.02em' }}>
-            Malkah<span className="text-gradient">Web Services</span>
+            Malkah <span className="text-gradient">Web Services</span>
           </div>
           <div className="nav-links">
             <a href="#services">Services</a>
