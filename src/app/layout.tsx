@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "Malkah Web Services | Premium Web Design & Development",
   description: "Crafting modern, high-performance web experiences. Full stack development, UI/UX design, and SEO optimization for businesses.",
+  icons: {
+    icon: "/malkah-logo-v2-icon.png",
+  },
 };
 
 export default function RootLayout({
