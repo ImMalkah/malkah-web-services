@@ -3,10 +3,13 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { getImageUrl } from '@/lib/supabase';
-import SplineScene from '@/components/SplineScene';
+import VideoScrollSection from '@/components/VideoScrollSection';
+import Navbar from '@/components/Navbar';
+import ServiceCard from '@/components/ServiceCard';
+import ProjectBrowserModal from '@/components/ProjectBrowserModal';
 
 export default function Home() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedProjectUrl, setSelectedProjectUrl] = useState<string | null>(null);
 
   return (
     <main>
@@ -14,104 +17,9 @@ export default function Home() {
       <div className="glow-bg"></div>
       <div className="glow-bg-2"></div>
 
-      {/* Navbar */}
-      <nav className="navbar animate-fade-in">
-        <div className="navbar-inner">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <Image 
-              src="/malkah-logo-v2-icon.png" 
-              alt="Malkah Web Services Logo" 
-              width={56} 
-              height={56}
-              style={{ objectFit: 'contain', borderRadius: '14px' }}
-              unoptimized={true}
-              priority
-            />
-            <div style={{ fontSize: '1.75rem', fontWeight: 800, letterSpacing: '-0.02em' }}>
-              Malkah <span className="text-gradient">Web Services</span>
-            </div>
-          </div>
-          <div className="nav-links">
-            <a href="#services">Services</a>
-            <a href="#work">Our Work</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <a href="#contact" className="btn btn-primary" style={{ padding: '10px 24px', fontSize: '0.9rem' }}>
-            Free Quote
-          </a>
-        </div>
-      </nav>
+      <Navbar />
 
-      <SplineScene />
-
-      {/* Hero Section */}
-      <section className="hero-section" style={{ 
-        position: 'relative', 
-        height: '100vh', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        paddingTop: '80px',
-        zIndex: 10,
-        pointerEvents: 'none'
-      }}>
-        <div className="container" style={{ width: '100%', pointerEvents: 'none' }}>
-          <div className="animate-fade-in delay-1 glass-panel" style={{ 
-            maxWidth: '800px', 
-            textAlign: 'center', 
-            margin: '0 auto', 
-            padding: '40px', 
-            background: 'rgba(5, 5, 5, 0.4)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            pointerEvents: 'auto'
-          }}>
-            <h1 className="hero-title">
-              Crafting Digital <span className="text-gradient">Experiences</span> That Convert.
-            </h1>
-            <p className="hero-subtitle" style={{ margin: '0 auto 40px auto', color: '#e4e4e7' }}>
-              We build premium, high-performance web applications that elevate your brand. 
-              From stunning UI/UX to robust full-stack development and SEO optimization.
-            </p>
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <a href="#contact" className="btn btn-primary">Start a Project</a>
-              <a href="#work" className="btn btn-glass">View Our Work</a>
-            </div>
-          </div>
-        </div>
-
-        {/* Interaction Indicator */}
-        <div className="animate-fade-in delay-3" style={{
-          position: 'absolute',
-          bottom: '10%',
-          left: '50%',
-          zIndex: 20,
-          pointerEvents: 'none'
-        }}>
-          <div className="interaction-indicator" style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            padding: '12px 24px',
-            background: 'rgba(5, 5, 5, 0.5)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            borderRadius: '30px',
-            color: '#e4e4e7',
-            fontSize: '0.95rem',
-            fontWeight: 500,
-            boxShadow: '0 4px 20px rgba(0,0,0,0.3)'
-          }}>
-            <svg className="drag-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 9l4-4 4 4"/>
-              <path d="M9 5v14"/>
-              <path d="M19 15l-4 4-4-4"/>
-              <path d="M15 19V5"/>
-            </svg>
-            Click & Drag to Explore
-          </div>
-        </div>
-      </section>
+      <VideoScrollSection />
 
       <div className="container" style={{ paddingTop: '40px' }}>
 
@@ -125,30 +33,22 @@ export default function Home() {
             Comprehensive web solutions tailored to scale your business.
           </p>
           
-          <div className="grid-3 animate-fade-in delay-2">
-            <div className="glass glass-panel service-card">
-              <div className="service-icon">⚡</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '12px' }}>Full-Stack Development</h3>
-              <p style={{ color: '#a1a1aa' }}>
-                End-to-end development of robust, scalable web applications using modern frameworks like Next.js and React.
-              </p>
-            </div>
-            
-            <div className="glass glass-panel service-card">
-              <div className="service-icon">✨</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '12px' }}>UI/UX Design</h3>
-              <p style={{ color: '#a1a1aa' }}>
-                Creating sleek, intuitive, and conversion-focused interfaces that delight users and elevate your brand identity.
-              </p>
-            </div>
-            
-            <div className="glass glass-panel service-card">
-              <div className="service-icon">🚀</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '12px' }}>SEO Optimization</h3>
-              <p style={{ color: '#a1a1aa' }}>
-                Technical and on-page SEO strategies to ensure your website ranks high and attracts the right audience.
-              </p>
-            </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+            <ServiceCard 
+              title="Custom Web Development"
+              subtitle="Performance & Scalability"
+              description="We build blazing-fast, scalable web applications specifically tailored to your unique business needs and requirements."
+            />
+            <ServiceCard 
+              title="UI/UX Design"
+              subtitle="User-Centric Interfaces"
+              description="Crafting beautiful, highly intuitive interfaces that your users will fall in love with and enjoy navigating."
+            />
+            <ServiceCard 
+              title="E-commerce Solutions"
+              subtitle="Conversion Optimization"
+              description="Developing robust, completely secure online stores that are meticulously designed to maximize your online conversions."
+            />
           </div>
         </section>
 
@@ -163,7 +63,19 @@ export default function Home() {
 
           <div className="grid-2 animate-fade-in delay-2">
             {/* Project 1 */}
-            <div className="glass portfolio-card" style={{ cursor: 'pointer' }} onClick={() => setSelectedImage(getImageUrl('stonex.png'))}>
+            <div 
+              className="glass portfolio-card" 
+              style={{ cursor: 'pointer', touchAction: 'manipulation' }} 
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedProjectUrl('https://www.stonexcontracting.ca');
+              }}
+              onTouchEnd={(e) => {
+                // Prevent ghost clicks
+                e.preventDefault();
+                setSelectedProjectUrl('https://www.stonexcontracting.ca');
+              }}
+            >
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
                 <Image 
                   src={getImageUrl('stonex.png')} 
@@ -185,7 +97,19 @@ export default function Home() {
             </div>
 
             {/* Project 2 */}
-            <div className="glass portfolio-card" style={{ cursor: 'pointer' }} onClick={() => setSelectedImage(getImageUrl('rannosh.png'))}>
+            <div 
+              className="glass portfolio-card" 
+              style={{ cursor: 'pointer', touchAction: 'manipulation' }} 
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedProjectUrl('https://www.rannoshgrill.ca');
+              }}
+              onTouchEnd={(e) => {
+                // Prevent ghost clicks
+                e.preventDefault();
+                setSelectedProjectUrl('https://www.rannoshgrill.ca');
+              }}
+            >
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
                 <Image 
                   src={getImageUrl('rannosh.png')} 
@@ -247,29 +171,11 @@ export default function Home() {
         </footer>
       </div>
 
-      {/* Fullscreen Image Modal */}
-      {selectedImage && (
-        <div 
-          className="modal-overlay"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button 
-              className="modal-close" 
-              onClick={() => setSelectedImage(null)}
-              aria-label="Close"
-            >
-              ✕
-            </button>
-            <Image 
-              src={selectedImage} 
-              alt="Portfolio Full View" 
-              fill
-              style={{ objectFit: 'contain' }}
-              unoptimized={true}
-            />
-          </div>
-        </div>
+      {selectedProjectUrl && (
+        <ProjectBrowserModal 
+          url={selectedProjectUrl} 
+          onClose={() => setSelectedProjectUrl(null)} 
+        />
       )}
     </main>
   );
