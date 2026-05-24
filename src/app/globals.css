@@ -202,7 +202,7 @@ html, body {
   .desktop-links {
     display: none !important;
   }
-  .pill-btn {
+  .liquid-nav .pill-btn {
     display: none !important; /* Hide CTA inside nav on mobile, moved to drawer */
   }
   .mobile-toggle {
