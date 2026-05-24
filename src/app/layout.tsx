@@ -9,6 +9,7 @@ export const viewport: Viewport = {
 };
 import { Raleway, Playfair_Display } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const raleway = Raleway({ subsets: ["latin"], variable: "--font-raleway" });
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body className={`${raleway.variable} ${playfair.variable}`}>
         <ThemeProvider>
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
