@@ -164,7 +164,11 @@ export default function Home() {
       {selectedProjectUrl && (
         <ProjectBrowserModal 
           url={selectedProjectUrl} 
-          onClose={() => setSelectedProjectUrl(null)} 
+          onClose={() => {
+            setSelectedProjectUrl(null);
+            // Dispatch event synchronously during the tap gesture to wake up the iOS media decoder
+            window.dispatchEvent(new Event('wake-up-video'));
+          }} 
         />
       )}
     </main>

@@ -23,7 +23,7 @@ export default function ProjectBrowserModal({ url, onClose }: ProjectBrowserModa
     document.addEventListener('touchmove', preventBackgroundScroll, { passive: false });
 
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
       document.removeEventListener('touchmove', preventBackgroundScroll);
     };
   }, []);

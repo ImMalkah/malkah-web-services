@@ -38,12 +38,12 @@ export default function Navbar() {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '10px 10px 10px 24px',
-            background: 'rgba(255, 255, 255, 0.05)',
+            background: 'var(--glass-bg)',
             backdropFilter: 'blur(24px)',
             WebkitBackdropFilter: 'blur(24px)',
             borderRadius: '50px',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
+            border: '1px solid var(--glass-border)',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)',
             width: '100%',
             maxWidth: '900px',
             transition: 'all 0.3s ease',
@@ -61,7 +61,7 @@ export default function Navbar() {
               unoptimized={true}
               priority
             />
-            <div style={{ fontSize: '1.1rem', fontWeight: 700, letterSpacing: '-0.02em', color: '#fff' }}>
+            <div style={{ fontSize: '1.1rem', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--foreground)' }}>
               Malkah
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function Navbar() {
                 background: 'transparent',
                 border: 'none',
                 cursor: 'pointer',
-                color: '#fff',
+                color: 'var(--foreground)',
                 padding: '8px',
               }}
               aria-label="Toggle menu"
@@ -126,7 +126,7 @@ export default function Navbar() {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(5, 5, 5, 0.95)',
+          background: 'var(--background)',
           backdropFilter: 'blur(20px)',
           zIndex: 999,
           display: 'flex',
@@ -139,9 +139,9 @@ export default function Navbar() {
           transition: 'opacity 0.3s ease'
         }}
       >
-        <a href="#services" onClick={() => setIsMobileOpen(false)} style={{ fontSize: '2rem', fontWeight: 600, color: '#fff' }}>Services</a>
-        <a href="#work" onClick={() => setIsMobileOpen(false)} style={{ fontSize: '2rem', fontWeight: 600, color: '#fff' }}>Our Work</a>
-        <a href="#contact" onClick={() => setIsMobileOpen(false)} style={{ fontSize: '2rem', fontWeight: 600, color: '#fff' }}>Contact</a>
+        <a href="#services" onClick={() => setIsMobileOpen(false)} style={{ fontSize: '2rem', fontWeight: 600, color: 'var(--foreground)' }}>Services</a>
+        <a href="#work" onClick={() => setIsMobileOpen(false)} style={{ fontSize: '2rem', fontWeight: 600, color: 'var(--foreground)' }}>Our Work</a>
+        <a href="#contact" onClick={() => setIsMobileOpen(false)} style={{ fontSize: '2rem', fontWeight: 600, color: 'var(--foreground)' }}>Contact</a>
         <a href="#contact" onClick={() => setIsMobileOpen(false)} className="pill-btn" style={{ fontSize: '1.2rem', padding: '16px 32px' }}>Free Quote</a>
       </div>
     </>

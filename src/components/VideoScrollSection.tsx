@@ -55,8 +55,29 @@ export default function VideoScrollSection() {
     // Initial call
     handleScroll();
 
+    // Wake up suspended video decoders on iOS when the iframe modal closes
+    const handleWakeUp = () => {
+      if (videoRef.current) {
+        // Calling load() completely re-initializes the iOS media decoder pipeline
+        videoRef.current.load();
+        
+        // Force the frame to render correctly based on current scroll position
+        if (containerRef.current) {
+          const { top, height } = containerRef.current.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          let scrollFraction = -top / (height - windowHeight);
+          scrollFraction = Math.max(0, Math.min(1, scrollFraction));
+          if (videoRef.current.duration) {
+            videoRef.current.currentTime = scrollFraction * videoRef.current.duration;
+          }
+        }
+      }
+    };
+    window.addEventListener('wake-up-video', handleWakeUp);
+
     return () => {
       cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('wake-up-video', handleWakeUp);
     };
   }, []);
 
