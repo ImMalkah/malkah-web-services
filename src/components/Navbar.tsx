@@ -57,12 +57,13 @@ export default function Navbar() {
               alt="Logo" 
               width={28} 
               height={28}
+              className="brand-logo"
               style={{ objectFit: 'contain', borderRadius: '8px' }}
               unoptimized={true}
               priority
             />
-            <div style={{ fontSize: '1.1rem', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--foreground)' }}>
-              Malkah
+            <div className="brand-text" style={{ fontSize: '1.1rem', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--foreground)' }}>
+              Malkah Web Services
             </div>
           </div>
 

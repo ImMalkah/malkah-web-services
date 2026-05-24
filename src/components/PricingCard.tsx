@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 type PricingCardProps = {
   tier: {
@@ -19,18 +20,22 @@ type PricingCardProps = {
 
 export default function PricingCard({ tier }: PricingCardProps) {
   return (
-    <div className={`glass pricing-card ${tier.isPopular ? 'popular-tier' : ''}`} style={{
-      position: 'relative',
-      padding: '40px',
-      borderRadius: '24px',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '24px',
-      height: '100%',
-      border: tier.isPopular ? '1px solid var(--glow-cyan)' : '1px solid var(--glass-border)',
-      boxShadow: tier.isPopular ? '0 0 40px rgba(0, 240, 255, 0.15)' : 'none',
-      transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-    }}>
+    <motion.div 
+      whileHover={{ y: -10, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className={`glass pricing-card ${tier.isPopular ? 'popular-tier' : ''}`} 
+      style={{
+        position: 'relative',
+        padding: '40px',
+        borderRadius: '24px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '24px',
+        height: '100%',
+        border: tier.isPopular ? '1px solid var(--glow-cyan)' : '1px solid var(--glass-border)',
+        boxShadow: tier.isPopular ? '0 0 40px rgba(0, 240, 255, 0.15)' : 'none',
+      }}
+    >
       {tier.isPopular && (
         <div style={{
           position: 'absolute',
@@ -119,6 +124,6 @@ export default function PricingCard({ tier }: PricingCardProps) {
       }}>
         Select Package
       </a>
-    </div>
+    </motion.div>
   );
 }
