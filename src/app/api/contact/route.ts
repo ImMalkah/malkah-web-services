@@ -63,7 +63,7 @@ export async function POST(req: Request) {
     `;
 
     // Send email using Resend
-    // By default, you can only send from a domain you verified on Resend (e.g., info@malkahservices.ca)
+    // By default, you can only send from a domain you verified on Resend (e.g., admin@malkahservices.ca)
     // For testing, Resend allows sending FROM onboarding@resend.dev TO your registered email.
     // Assuming the user has verified their domain and added RESEND_API_KEY:
     
@@ -82,7 +82,7 @@ export async function POST(req: Request) {
     }
 
     const data = await resend.emails.send({
-      from: 'Contact Form <info@malkahservices.ca>', // User should configure this to their verified domain
+      from: 'Contact Form <admin@malkahservices.ca>', // User should configure this to their verified domain
       to: ['admin@malkahservices.ca'],
       subject: `New Inquiry: ${selectedPackage} Package - ${name}`,
       html: htmlContent,

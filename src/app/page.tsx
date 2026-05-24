@@ -186,7 +186,7 @@ export default function Home() {
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.5}>
-                <a href="mailto:info@malkahservices.ca" className="glass pricing-card" style={{
+                <a href="mailto:admin@malkahservices.ca" className="glass pricing-card" style={{
                   padding: '24px',
                   borderRadius: '16px',
                   border: '1px solid var(--glass-border)',
@@ -201,7 +201,7 @@ export default function Home() {
                   <div style={{ padding: '12px', background: 'rgba(128,128,128,0.1)', borderRadius: '50%' }}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                   </div>
-                  <span style={{ fontWeight: 600, fontSize: '1rem' }}>info@malkahservices.ca</span>
+                  <span style={{ fontWeight: 600, fontSize: '1rem' }}>admin@malkahservices.ca</span>
                   <span style={{ fontSize: '0.85rem', opacity: 0.7 }}>Email Us</span>
                 </a>
               </ScrollReveal>
