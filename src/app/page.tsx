@@ -5,8 +5,9 @@ import { useState } from 'react';
 import { getImageUrl } from '@/lib/supabase';
 import VideoScrollSection from '@/components/VideoScrollSection';
 import Navbar from '@/components/Navbar';
-import ServiceCard from '@/components/ServiceCard';
+import PricingCard from '@/components/PricingCard';
 import ProjectBrowserModal from '@/components/ProjectBrowserModal';
+import pricingData from '@/data/pricing.json';
 
 export default function Home() {
   const [selectedProjectUrl, setSelectedProjectUrl] = useState<string | null>(null);
@@ -28,27 +29,22 @@ export default function Home() {
           <div className="glow-bg" style={{ top: '10%', left: '-10%' }}></div>
           <div className="glow-bg-2" style={{ bottom: '10%', right: '-10%' }}></div>
           
-          <h2 className="section-title animate-fade-in">Our Services</h2>
+          <h2 className="section-title animate-fade-in">Our Packages</h2>
           <p className="section-subtitle animate-fade-in delay-1">
-            Comprehensive web solutions tailored to scale your business.
+            Transparent pricing. Exceptional value. No hidden fees.
           </p>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
-            <ServiceCard 
-              title="Custom Web Development"
-              subtitle="Performance & Scalability"
-              description="We build blazing-fast, scalable web applications specifically tailored to your unique business needs and requirements."
-            />
-            <ServiceCard 
-              title="UI/UX Design"
-              subtitle="User-Centric Interfaces"
-              description="Crafting beautiful, highly intuitive interfaces that your users will fall in love with and enjoy navigating."
-            />
-            <ServiceCard 
-              title="E-commerce Solutions"
-              subtitle="Conversion Optimization"
-              description="Developing robust, completely secure online stores that are meticulously designed to maximize your online conversions."
-            />
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+            gap: '32px', 
+            width: '100%', 
+            maxWidth: '1200px', 
+            margin: '40px auto 0' 
+          }}>
+            {pricingData.map((tier) => (
+              <PricingCard key={tier.id} tier={tier} />
+            ))}
           </div>
         </section>
 

@@ -1,0 +1,54 @@
+[
+  {
+    "id": "starter",
+    "name": "Starter",
+    "price": "500",
+    "monthlyAddon": "150",
+    "monthlyAddonDesc": "SEO & Maintenance",
+    "description": "A beautiful, lightning-fast foundation for your business.",
+    "features": [
+      "Custom Design & Development",
+      "Mobile Responsive Layout",
+      "Contact Form Integration",
+      "Basic SEO Setup",
+      "Domain Setup (Domain cost separate)"
+    ],
+    "addonFeatures": [
+      "Zero Setup Costs",
+      "Domain Maintained & Included in plan"
+    ],
+    "isPopular": false
+  },
+  {
+    "id": "deluxe",
+    "name": "Deluxe",
+    "price": "800",
+    "monthlyAddon": "150",
+    "monthlyAddonDesc": "SEO & Maintenance",
+    "description": "Advanced features and content management for growing businesses.",
+    "inheritedFeaturesText": "Everything in Starter, plus:",
+    "features": [
+      "CMS Integration (edit your own content)",
+      "Advanced Animations",
+      "Multi-page Architecture",
+      "Analytics Dashboard Integration"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "highend",
+    "name": "High-End",
+    "price": "1,500+",
+    "monthlyAddon": "250",
+    "monthlyAddonDesc": "SEO & Maintenance",
+    "description": "State-of-the-art interactive experiences that wow your users.",
+    "inheritedFeaturesText": "Everything in Deluxe, plus:",
+    "features": [
+      "Stop-scroll / Scroll-bound animations",
+      "Interactive 3D Models & Graphics",
+      "Synced Sound & Media",
+      "Custom WebGL / Canvas effects"
+    ],
+    "isPopular": false
+  }
+]
