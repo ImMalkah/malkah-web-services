@@ -12,7 +12,7 @@ export default function Home() {
   const [selectedProjectUrl, setSelectedProjectUrl] = useState<string | null>(null);
 
   return (
-    <main>
+    <main style={{ overflowX: 'clip', width: '100%', position: 'relative' }}>
       {/* Background glowing orbs */}
       <div className="glow-bg"></div>
       <div className="glow-bg-2"></div>

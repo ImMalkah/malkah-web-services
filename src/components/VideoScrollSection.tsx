@@ -109,7 +109,7 @@ export default function VideoScrollSection() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            opacity: progress > 0.95 ? 1 - ((progress - 0.95) * 20) : 1 // fade out at the very end to transition to next section
+            opacity: progress > 0.95 ? 1 - ((progress - 0.95) * 20) : 1
           }}
         />
 
