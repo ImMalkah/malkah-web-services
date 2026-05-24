@@ -8,11 +8,23 @@ interface ProjectBrowserModalProps {
 }
 
 export default function ProjectBrowserModal({ url, onClose }: ProjectBrowserModalProps) {
-  // Prevent scrolling on body when modal is open
   useEffect(() => {
+    // Hide scrollbar on desktop
     document.body.style.overflow = 'hidden';
+    
+    // Bulletproof iOS background scroll lock
+    // Prevents touch dragging on the overlay/header from scrolling the main page
+    const preventBackgroundScroll = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+
+    // Attach to document with { passive: false } to allow preventDefault
+    // This will NOT affect the iframe since it has its own document scope
+    document.addEventListener('touchmove', preventBackgroundScroll, { passive: false });
+
     return () => {
       document.body.style.overflow = 'auto';
+      document.removeEventListener('touchmove', preventBackgroundScroll);
     };
   }, []);
 
