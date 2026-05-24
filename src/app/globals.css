@@ -704,17 +704,34 @@ a {
 
 @media (max-width: 768px) {
   .browser-window-container {
-    width: 100%;
-    height: 100vh;
+    width: 90%;
+    height: 80vh; /* Don't take up the full screen, leave room around the modal */
     padding: 0;
   }
   
   .browser-window {
-    border-radius: 0;
-    border: none;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
   }
   
+  .browser-header {
+    height: 56px; /* Slightly taller for mobile tap targets */
+  }
+
+  .action-btn {
+    width: 16px; /* Make the macos buttons larger and easier to tap on mobile */
+    height: 16px;
+  }
+
+  .browser-actions {
+    gap: 12px; /* More spacing between buttons */
+  }
+
+  .browser-url-bar {
+    max-width: 45%;
+  }
+
   .browser-modal-close {
-    display: none; /* Let them use the red close button on mobile, or keep it */
+    display: none; /* Let them use the red close button on mobile, or tap outside */
   }
 }

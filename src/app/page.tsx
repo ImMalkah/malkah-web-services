@@ -70,11 +70,6 @@ export default function Home() {
                 e.preventDefault();
                 setSelectedProjectUrl('https://www.stonexcontracting.ca');
               }}
-              onTouchEnd={(e) => {
-                // Prevent ghost clicks
-                e.preventDefault();
-                setSelectedProjectUrl('https://www.stonexcontracting.ca');
-              }}
             >
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
                 <Image 
@@ -101,11 +96,6 @@ export default function Home() {
               className="glass portfolio-card" 
               style={{ cursor: 'pointer', touchAction: 'manipulation' }} 
               onClick={(e) => {
-                e.preventDefault();
-                setSelectedProjectUrl('https://www.rannoshgrill.ca');
-              }}
-              onTouchEnd={(e) => {
-                // Prevent ghost clicks
                 e.preventDefault();
                 setSelectedProjectUrl('https://www.rannoshgrill.ca');
               }}
