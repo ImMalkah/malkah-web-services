@@ -20,6 +20,28 @@ export const metadata: Metadata = {
   icons: {
     icon: "/malkah-logo-v2-icon.png",
   },
+  openGraph: {
+    title: "Malkah Web Services",
+    description: "Premium Web Design & Full Stack Development",
+    url: "https://malkahservices.ca",
+    siteName: "Malkah Web Services",
+    images: [
+      {
+        url: "/og-image.jpg", // Create an image and put it in the public folder as og-image.jpg
+        width: 1200,
+        height: 630,
+        alt: "Malkah Web Services Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Malkah Web Services",
+    description: "Premium Web Design & Full Stack Development",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
