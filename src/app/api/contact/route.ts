@@ -86,7 +86,7 @@ export async function POST(req: Request) {
       to: ['admin@malkahservices.ca'],
       subject: `New Inquiry: ${selectedPackage} Package - ${name}`,
       html: htmlContent,
-      reply_to: email || undefined,
+      replyTo: email || undefined,
     });
 
     return NextResponse.json({ success: true, data });
