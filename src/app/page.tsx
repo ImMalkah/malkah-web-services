@@ -6,6 +6,7 @@ import { getImageUrl } from '@/lib/supabase';
 import VideoScrollSection from '@/components/VideoScrollSection';
 import Navbar from '@/components/Navbar';
 import PricingCard from '@/components/PricingCard';
+import ContactForm from '@/components/ContactForm';
 import ProjectBrowserModal from '@/components/ProjectBrowserModal';
 import pricingData from '@/data/pricing.json';
 
@@ -122,30 +123,78 @@ export default function Home() {
         <section id="contact" className="section" style={{ textAlign: 'center', position: 'relative' }}>
           <div className="glow-bg" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.5 }}></div>
 
-          <div className="glass glass-panel animate-fade-in" style={{ padding: '80px 40px', maxWidth: '800px', margin: '0 auto', position: 'relative' }}>
-            <h2 className="section-title" style={{ marginBottom: '24px' }}>Ready to elevate your digital presence?</h2>
-            <p style={{ color: '#a1a1aa', marginBottom: '40px', fontSize: '1.2rem' }}>
-              Let's build something extraordinary together. Reach out to us directly.
-            </p>
+          <div className="animate-fade-in" style={{ maxWidth: '800px', margin: '0 auto', position: 'relative', display: 'flex', flexDirection: 'column', gap: '40px' }}>
+            <div>
+              <h2 className="section-title" style={{ marginBottom: '24px' }}>Ready to elevate your digital presence?</h2>
+              <p style={{ color: '#a1a1aa', fontSize: '1.2rem' }}>
+                Let's build something extraordinary together. Fill out the form below or reach out to us directly.
+              </p>
+            </div>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', alignItems: 'center' }}>
-              <a href="tel:9055163505" className="contact-link">
-                <div className="contact-icon-wrapper">
+            <ContactForm />
+
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
+              gap: '24px', 
+              marginTop: '20px',
+              width: '100%'
+            }}>
+              <a href="tel:9055163505" className="glass pricing-card" style={{
+                padding: '24px',
+                borderRadius: '16px',
+                border: '1px solid var(--glass-border)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '12px',
+                color: 'var(--foreground)',
+                textDecoration: 'none',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}>
+                <div style={{ padding: '12px', background: 'rgba(128,128,128,0.1)', borderRadius: '50%' }}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 </div>
-                <span>(905) 516-3505</span>
+                <span style={{ fontWeight: 600, fontSize: '1rem' }}>(905) 516-3505</span>
+                <span style={{ fontSize: '0.85rem', opacity: 0.7 }}>Call Us</span>
               </a>
-              <a href="mailto:info@malkahservices.ca" className="contact-link">
-                <div className="contact-icon-wrapper">
+
+              <a href="mailto:info@malkahservices.ca" className="glass pricing-card" style={{
+                padding: '24px',
+                borderRadius: '16px',
+                border: '1px solid var(--glass-border)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '12px',
+                color: 'var(--foreground)',
+                textDecoration: 'none',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}>
+                <div style={{ padding: '12px', background: 'rgba(128,128,128,0.1)', borderRadius: '50%' }}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </div>
-                <span>info@malkahservices.ca</span>
+                <span style={{ fontWeight: 600, fontSize: '1rem' }}>info@malkahservices.ca</span>
+                <span style={{ fontSize: '0.85rem', opacity: 0.7 }}>Email Us</span>
               </a>
-              <a href="https://www.instagram.com/malkahwebservices" target="_blank" rel="noopener noreferrer" className="contact-link">
-                <div className="contact-icon-wrapper">
+
+              <a href="https://www.instagram.com/malkahwebservices" target="_blank" rel="noopener noreferrer" className="glass pricing-card" style={{
+                padding: '24px',
+                borderRadius: '16px',
+                border: '1px solid var(--glass-border)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '12px',
+                color: 'var(--foreground)',
+                textDecoration: 'none',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              }}>
+                <div style={{ padding: '12px', background: 'rgba(128,128,128,0.1)', borderRadius: '50%' }}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </div>
-                <span>@malkahwebservices</span>
+                <span style={{ fontWeight: 600, fontSize: '1rem' }}>@malkahwebservices</span>
+                <span style={{ fontSize: '0.85rem', opacity: 0.7 }}>Instagram</span>
               </a>
             </div>
           </div>
