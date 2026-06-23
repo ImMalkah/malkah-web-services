@@ -10,10 +10,12 @@ import PricingCard from '@/components/PricingCard';
 import ContactForm from '@/components/ContactForm';
 import ProjectBrowserModal from '@/components/ProjectBrowserModal';
 import ScrollReveal from '@/components/ScrollReveal';
+import AthenaChatPopup from '@/components/AthenaChatPopup';
 import pricingData from '@/data/pricing.json';
 
 export default function Home() {
   const [selectedProjectUrl, setSelectedProjectUrl] = useState<string | null>(null);
+  const [selectedPackageName, setSelectedPackageName] = useState<string | null>(null);
 
   return (
     <main style={{ overflowX: 'clip', width: '100%', position: 'relative' }}>
@@ -52,7 +54,7 @@ export default function Home() {
           }}>
             {pricingData.map((tier, index) => (
               <ScrollReveal key={tier.id} direction="up" delay={0.2 + (index * 0.15)} height="100%">
-                <PricingCard tier={tier} />
+                <PricingCard tier={tier} onSelectPackage={setSelectedPackageName} />
               </ScrollReveal>
             ))}
           </div>
@@ -245,6 +247,13 @@ export default function Home() {
             // Dispatch event synchronously during the tap gesture to wake up the iOS media decoder
             window.dispatchEvent(new Event('wake-up-video'));
           }} 
+        />
+      )}
+
+      {selectedPackageName && (
+        <AthenaChatPopup
+          packageName={selectedPackageName}
+          onClose={() => setSelectedPackageName(null)}
         />
       )}
     </main>

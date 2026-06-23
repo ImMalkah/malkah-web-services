@@ -16,9 +16,28 @@ type PricingCardProps = {
     addonFeatures?: string[];
     isPopular: boolean;
   };
+  onSelectPackage?: (packageName: string) => void;
 };
 
-export default function PricingCard({ tier }: PricingCardProps) {
+export default function PricingCard({ tier, onSelectPackage }: PricingCardProps) {
+  const ctaStyle = {
+    marginTop: 0,
+    width: '100%',
+    textAlign: 'center' as const,
+    padding: '16px',
+    background: tier.isPopular ? 'var(--foreground)' : 'transparent',
+    color: tier.isPopular ? 'var(--background)' : 'var(--foreground)',
+    border: tier.isPopular ? '1px solid transparent' : '1px solid var(--glass-border)',
+    fontWeight: 600,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    boxSizing: 'border-box' as const,
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+  };
+
   return (
     <motion.div 
       whileHover={{ y: -10, scale: 1.02 }}
@@ -113,23 +132,20 @@ export default function PricingCard({ tier }: PricingCardProps) {
         </div>
       </div>
 
-      <a href="#contact" className="pill-btn" style={{ 
-        marginTop: 0, 
-        width: '100%', 
-        textAlign: 'center',
-        padding: '16px',
-        background: tier.isPopular ? 'var(--foreground)' : 'transparent',
-        color: tier.isPopular ? 'var(--background)' : 'var(--foreground)',
-        border: tier.isPopular ? '1px solid transparent' : '1px solid var(--glass-border)',
-        fontWeight: 600,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100%',
-        boxSizing: 'border-box'
-      }}>
-        Select Package
-      </a>
+      {onSelectPackage ? (
+        <button
+          type="button"
+          className="pill-btn"
+          style={ctaStyle}
+          onClick={() => onSelectPackage(tier.name)}
+        >
+          Select Package
+        </button>
+      ) : (
+        <a href="#contact" className="pill-btn" style={ctaStyle}>
+          Select Package
+        </a>
+      )}
     </motion.div>
   );
 }

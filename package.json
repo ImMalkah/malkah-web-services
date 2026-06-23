@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "tsc --outDir .tmp/athena-tests --module commonjs --moduleResolution node --target ES2022 --types node --skipLibCheck src/lib/athenaChat.test.ts src/lib/athenaChat.ts src/lib/supabase.test.ts src/lib/supabase.ts && node --test .tmp/athena-tests/athenaChat.test.js .tmp/athena-tests/supabase.test.js"
   },
   "dependencies": {
     "@splinetool/react-spline": "^4.1.0",
