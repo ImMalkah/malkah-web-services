@@ -5,6 +5,7 @@
   --primary: #00b4d8;      /* slightly darker, vibrant blue-cyan for contrast */
   --primary-dark: #0096c7;
   --secondary: #6200ea;    /* deeper purple for contrast */
+  --glow-cyan: #00b4d8;
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(0, 0, 0, 0.1);
   --glass-blur: 16px;
@@ -18,6 +19,7 @@
   --primary: #00e5ff;
   --primary-dark: #00b8cc;
   --secondary: #7000ff;
+  --glow-cyan: #00e5ff;
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-blur: 12px;
@@ -328,10 +330,43 @@ a {
   opacity: 1;
 }
 
+.package-pricing-card {
+  --pricing-intro-row: 96px;
+  --pricing-price-row: 64px;
+  --pricing-addon-row: 168px;
+  --pricing-cta-row: 51px;
+  min-height: 100%;
+}
+
+.package-pricing-card__intro {
+  min-height: 0;
+}
+
+.package-pricing-card__price {
+  min-height: 0;
+}
+
+.package-pricing-card__addon {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.package-pricing-card__features {
+  min-height: 0;
+}
+
 @media (max-width: 768px) {
   .portfolio-content {
     transform: translateY(0);
     opacity: 1;
+  }
+
+  .package-pricing-card {
+    --pricing-intro-row: auto;
+    --pricing-price-row: auto;
+    --pricing-addon-row: auto;
+    --pricing-cta-row: auto;
   }
 }
 

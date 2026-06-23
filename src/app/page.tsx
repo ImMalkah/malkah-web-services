@@ -45,12 +45,13 @@ export default function Home() {
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
             gap: '32px', 
+            alignItems: 'stretch',
             width: '100%', 
             maxWidth: '1200px', 
             margin: '40px auto 0' 
           }}>
             {pricingData.map((tier, index) => (
-              <ScrollReveal key={tier.id} direction="up" delay={0.2 + (index * 0.15)}>
+              <ScrollReveal key={tier.id} direction="up" delay={0.2 + (index * 0.15)} height="100%">
                 <PricingCard tier={tier} />
               </ScrollReveal>
             ))}

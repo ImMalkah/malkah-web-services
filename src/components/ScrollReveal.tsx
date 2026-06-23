@@ -6,6 +6,7 @@ import { motion, useInView } from 'framer-motion';
 type RevealProps = {
   children: React.ReactNode;
   width?: 'fit-content' | '100%';
+  height?: React.CSSProperties['height'];
   delay?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
   duration?: number;
@@ -14,6 +15,7 @@ type RevealProps = {
 export default function ScrollReveal({ 
   children, 
   width = '100%', 
+  height,
   delay = 0,
   direction = 'up',
   duration = 0.6
@@ -42,8 +44,16 @@ export default function ScrollReveal({
     }
   };
 
+  const containerStyle: React.CSSProperties = { width, position: 'relative' };
+  const contentStyle: React.CSSProperties = { width: '100%' };
+
+  if (height) {
+    containerStyle.height = height;
+    contentStyle.height = height;
+  }
+
   return (
-    <div ref={ref} style={{ width, position: 'relative' }}>
+    <div ref={ref} style={containerStyle}>
       <motion.div
         initial={getHiddenState()}
         animate={isInView ? getVisibleState() : getHiddenState()}
@@ -52,7 +62,7 @@ export default function ScrollReveal({
           ease: [0.16, 1, 0.3, 1], // Custom sleek spring-like bezier
           delay: delay,
         }}
-        style={{ width: '100%' }}
+        style={contentStyle}
       >
         {children}
       </motion.div>

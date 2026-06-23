@@ -23,15 +23,16 @@ export default function PricingCard({ tier }: PricingCardProps) {
     <motion.div 
       whileHover={{ y: -10, scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className={`glass pricing-card ${tier.isPopular ? 'popular-tier' : ''}`} 
+      className={`glass pricing-card package-pricing-card ${tier.isPopular ? 'popular-tier' : ''}`} 
       style={{
         position: 'relative',
         padding: '40px',
         borderRadius: '24px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '24px',
+        display: 'grid',
+        gridTemplateRows: 'var(--pricing-intro-row) var(--pricing-price-row) var(--pricing-addon-row) minmax(0, 1fr) var(--pricing-cta-row)',
+        rowGap: '24px',
         height: '100%',
+        minHeight: '100%',
         border: tier.isPopular ? '1px solid var(--glow-cyan)' : '1px solid var(--glass-border)',
         boxShadow: tier.isPopular ? '0 0 40px rgba(0, 240, 255, 0.15)' : 'none',
       }}
@@ -57,22 +58,23 @@ export default function PricingCard({ tier }: PricingCardProps) {
         </div>
       )}
       
-      <div>
-        <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '8px' }}>{tier.name}</h3>
-        <p style={{ color: 'var(--foreground)', opacity: 0.7, fontSize: '0.95rem', lineHeight: 1.5 }}>
+      <div className="package-pricing-card__intro">
+        <h3 style={{ fontSize: '1.5rem', fontWeight: 600, margin: '0 0 8px', lineHeight: 1.2 }}>{tier.name}</h3>
+        <p style={{ color: 'var(--foreground)', opacity: 0.7, fontSize: '0.95rem', lineHeight: 1.5, margin: 0 }}>
           {tier.description}
         </p>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-        <span style={{ fontSize: '3rem', fontWeight: 700, letterSpacing: '-0.02em' }}>${tier.price}</span>
+      <div className="package-pricing-card__price" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+        <span style={{ fontSize: '3rem', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1 }}>${tier.price}</span>
       </div>
 
-      <div style={{ 
+      <div className="package-pricing-card__addon" style={{ 
         padding: '16px', 
         background: 'rgba(128, 128, 128, 0.05)', 
         borderRadius: '12px',
-        border: '1px solid var(--glass-border)'
+        border: '1px solid var(--glass-border)',
+        height: '100%'
       }}>
         <div style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '8px', color: 'var(--foreground)' }}>
           Optional Add-on
@@ -95,9 +97,9 @@ export default function PricingCard({ tier }: PricingCardProps) {
         )}
       </div>
 
-      <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '24px', flexGrow: 1 }}>
+      <div className="package-pricing-card__features" style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '24px', flex: '1 1 auto', minHeight: 0 }}>
         {tier.inheritedFeaturesText && (
-          <p style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '16px', color: 'var(--foreground)' }}>
+          <p style={{ fontSize: '0.9rem', fontWeight: 600, margin: '0 0 16px', color: 'var(--foreground)' }}>
             {tier.inheritedFeaturesText}
           </p>
         )}
@@ -112,15 +114,19 @@ export default function PricingCard({ tier }: PricingCardProps) {
       </div>
 
       <a href="#contact" className="pill-btn" style={{ 
-        marginTop: '16px', 
+        marginTop: 0, 
         width: '100%', 
         textAlign: 'center',
         padding: '16px',
         background: tier.isPopular ? 'var(--foreground)' : 'transparent',
         color: tier.isPopular ? 'var(--background)' : 'var(--foreground)',
-        border: tier.isPopular ? 'none' : '1px solid var(--glass-border)',
+        border: tier.isPopular ? '1px solid transparent' : '1px solid var(--glass-border)',
         fontWeight: 600,
-        display: 'block'
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        boxSizing: 'border-box'
       }}>
         Select Package
       </a>

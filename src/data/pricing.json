@@ -33,6 +33,10 @@
       "Multi-page Architecture",
       "Analytics Dashboard Integration"
     ],
+    "addonFeatures": [
+      "Zero Setup Costs",
+      "Domain Maintained & Included in plan"
+    ],
     "isPopular": true
   },
   {
@@ -48,6 +52,10 @@
       "Interactive 3D Models & Graphics",
       "Synced Sound & Media",
       "Custom WebGL / Canvas effects"
+    ],
+    "addonFeatures": [
+      "Zero Setup Costs",
+      "Domain Maintained & Included in plan"
     ],
     "isPopular": false
   }
